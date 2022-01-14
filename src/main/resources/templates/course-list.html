@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Course List</title>
+</head>
+<body>
+<form th:action="@{/register}" method="post">
+    <table>
+        <tr th:each="course : ${courseList}">
+            <td th:text="|${course.departmentId} - ${course.courseNumber}|">COURSE NUMBER</td>
+            <td th:text="${course.name}">NAME</td>
+            <td><a th:href="@{${flowExecutionUrl}(id=${course.id},name=_eventId_register)}">REGISTER</a>
+                <br>
+                <input type="submit" name="_eventId_register" th:value="${course.id}"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
